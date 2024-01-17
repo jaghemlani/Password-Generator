@@ -1,45 +1,32 @@
-var generateBtn = document.querySelector("#generate");
 
-function writePassword() {
-    var password = generatePassword();
-    var passwordText = document.querySelector("#password")
+const passwordBox = document.getElementById("password");
+const length = 12;
 
-    passwordText.value = password;
+const upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+const lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+const number = ["!","@","#","$","%","^","&","*","_","+","-","?"];
+const symbol = ["0","1","2","3","4","5","6","7","8","9"];
 
-}
+const allChars = upperCase + lowerCase + number + symbol;
 
-generateBtn.addEventListener("click", writePassword);
+document.getElementById("generate").addEventListener("click", createPassword);
 
-function generatePassword() {
-    var letterBig = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-    var lettersSmall = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-    var specialCharacters = ["!","@","#","$","%","^","&","*","_","+","-","?"];
-    var numbers = ["0","1","2","3","4","5","6","7","8","9"];
-    var choices = [lettersBig, lettersSmall, specialCharacters, numbers];
-    var minNum = 8;
-    var maxNum = 128;
-    var passwordSize = null;
-    var useBig, usesmall, useCharacters, useNums = false;
-    var passwordTemp = "";
-}
 
-for(passwordSize; passwordSize > 0; passwordSize--){
-    var randomizer = Math.floor(Math.random() * 4);
-    if (randoomizer == 0){
-        randomizer2 = Math.floor(Math.random()*lettersBig.length);
-        passwordTemp+- lettersBig[randomizer2]
+
+function createPassword(){
+    let passwords = "";
+    passwords += upperCase[Math.floor(Math.random() * upperCase.length)];
+    passwords += lowerCase[Math.floor(Math.random() * lowerCase.length)];
+    passwords += number[Math.floor(Math.random() * number.length)];
+    passwords += symbol[Math.floor(Math.random() * symbol.length)];
+
+
+    while(length > passwords.length){
+        passwords += allChars[Math.floor(Math.random() * allChars.length)];
     }
+
+   passwordBox.value = passwords;
+    
 }
 
 
-
-do {
-    useBig = confirm("does your password need uppercase letters? "OK" for Yes, "cancel" for No");
-    useSmall = confirm("does your password need lowercase letters? "OK" for Yes, "cancel" for No");
-    useChars = confirm("does your password need special chracters? "OK" for Yes, "cancel" for No");
-    useNumbs = confirm("does your password need numbers? "OK" for Yes, "cancel" for No");
-}
-
-if ((
-
-))
